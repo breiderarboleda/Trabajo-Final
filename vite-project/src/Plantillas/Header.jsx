@@ -6,7 +6,6 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 
@@ -32,9 +31,6 @@ const Header = () => {
         </Typography>
         <Button color="inherit">Iniciar sesión</Button>
         <Button color="inherit">Registrar</Button>
-        <IconButton color="inherit" component={Link} to="/carrito">
-          <ShoppingCartIcon />
-        </IconButton>
         <Menu
           anchorEl={anchorEl}
           open={Boolean(anchorEl)}
