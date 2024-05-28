@@ -18,12 +18,12 @@ const LoginPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Aquí puedes manejar el inicio de sesión, por ejemplo, enviar los datos a tu servidor o API.
+    
     console.log('Form data:', form);
   };
 
   return (
-    <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
+    <Box display="flex" justifyContent="center" alignItems="center" minHeight="70vh" width = "100vw" >
       <Container maxWidth="sm">
         <Typography variant="h4" gutterBottom>
           Iniciar Sesión

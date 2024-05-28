@@ -19,12 +19,12 @@ const RegistroPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Aquí puedes manejar el registro, por ejemplo, enviar los datos a tu servidor o API.
+
     console.log('Form data:', form);
   };
 
   return (
-    <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
+    <Box display="flex" justifyContent="center" alignItems="center" minHeight="70vh"  width = "100vw">
       <Container maxWidth="sm">
         <Typography variant="h4" gutterBottom>
           Registro
@@ -73,7 +73,7 @@ const RegistroPage = () => {
             </Grid>
             <Grid item xs={12}>
               <Typography variant="body2">
-                ¿Ya tienes una cuenta? <Link to="/inicio-sesion">Inicia sesión aquí</Link>
+                ¿Ya tienes una cuenta? <Link to="/inicio">Inicia sesión aquí</Link>
               </Typography>
             </Grid>
           </Grid>

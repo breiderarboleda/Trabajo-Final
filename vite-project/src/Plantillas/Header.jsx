@@ -33,7 +33,7 @@ const Header = () => {
         <IconButton color="inherit" component={Link} to="/cart">
           <ShoppingCartIcon />
         </IconButton>
-        <Button color="inherit" component={Link} to="/login">Iniciar sesión</Button>
+        <Button color="inherit" component={Link} to="/inicio">Iniciar sesión</Button>
         <Button color="inherit" component={Link} to="/registro">Registrarse</Button>
 
         <Menu

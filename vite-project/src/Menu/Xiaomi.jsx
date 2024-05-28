@@ -33,7 +33,7 @@ const XiaomiPage = () => {
       {xiaomiPhones.map((phone, index) => (
         <Grid item key={index} xs={12} sm={6} md={4} lg={3} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <CellPhoneCard name={phone.name} image={phone.image} link={phone.link} />
-          <Button variant="contained" color="primary" component={Link} to={`/phone/${index}`} sx={{ marginTop: '1rem' }}>Ver</Button>
+          <Button variant="contained" color="primary" component={Link} to={`/phone/${index + 8}`} sx={{ marginTop: '1rem' }}>Ver</Button>
         </Grid>
       ))}
     </Grid>

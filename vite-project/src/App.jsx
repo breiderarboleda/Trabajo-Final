@@ -10,6 +10,7 @@ import Cart from './Cart';
 import Checkout from './Checkout';
 import RegistroPage from './Login/registro';
 import InicioSesionPage from './Login/inicio';
+import PhoneDetailsPage from './PhoneDetailsPage';
 
 function App() {
   return (
@@ -25,7 +26,8 @@ function App() {
             <Route path="/cart" element={<Cart />} /> {}
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/registro" element={<RegistroPage />} />
-            <Route path="/login" element={<InicioSesionPage />} />
+            <Route path="/inicio" element={<InicioSesionPage />} />
+            <Route path="/phone/:id" element={<PhoneDetailsPage />} />
           </Routes>
         </main>
         <Footer />
