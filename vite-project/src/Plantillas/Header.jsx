@@ -30,11 +30,11 @@ const Header = () => {
         <Typography variant="h6" sx={{ flexGrow: 1 }}>
           <Link to="/" style={{ color: 'inherit', textDecoration: 'none' }}>URPhone</Link>
         </Typography>
-        <IconButton color="inherit" component={Link} to="/carrito">
+        <IconButton color="inherit" component={Link} to="/cart">
           <ShoppingCartIcon />
         </IconButton>
-        <Button color="inherit">Iniciar sesión</Button>
-        <Button color="inherit">Registrar</Button>
+        <Button color="inherit" component={Link} to="/login">Iniciar sesión</Button>
+        <Button color="inherit" component={Link} to="/registro">Registrarse</Button>
 
         <Menu
           anchorEl={anchorEl}

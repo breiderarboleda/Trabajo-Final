@@ -11,6 +11,7 @@ import TextField from '@mui/material/TextField';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([
@@ -33,7 +34,8 @@ const Cart = () => {
   const total = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
   return (
-    <Container>
+    <Box display="flex" justifyContent="flex-end" alignItems="center" minHeight="100vh" pr={4}>
+    <Container maxWidth="sm" style={{ textAlign: 'right' }}>
       <Typography variant="h4" gutterBottom>
         Carrito de Compras
       </Typography>
@@ -56,7 +58,7 @@ const Cart = () => {
           </ListItem>
         ))}
       </List>
-      <Grid container spacing={2} justifyContent="space-between" alignItems="center">
+      <Grid container spacing={2} justifyContent="flex-end" alignItems="center">
         <Grid item>
           <Typography variant="h6">
             Total: ${total}
@@ -69,6 +71,7 @@ const Cart = () => {
         </Grid>
       </Grid>
     </Container>
+  </Box>
   );
 };
 
