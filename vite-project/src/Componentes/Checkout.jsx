@@ -25,12 +25,12 @@ const Checkout = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Aquí puedes manejar el envío del formulario, por ejemplo, enviar los datos a tu servidor o API.
+
     console.log('Form data:', form);
   };
 
   return (
-    <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
+    <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh" width="100vw">
       <Container maxWidth="sm">
         <Typography variant="h4" gutterBottom>
           Proceso de pago

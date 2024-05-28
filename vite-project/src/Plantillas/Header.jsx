@@ -22,28 +22,39 @@ const Header = () => {
   };
 
   return (
-    <AppBar position="fixed">
+    <AppBar position="fixed" sx={{ backgroundColor: 'white', color: 'black'}}>
       <Toolbar>
         <IconButton edge="start" color="inherit" aria-label="menu" onClick={handleClick}>
           <MenuIcon />
         </IconButton>
         <Typography variant="h6" sx={{ flexGrow: 1 }}>
-          <Link to="/" style={{ color: 'inherit', textDecoration: 'none' }}>URPhone</Link>
+          <Link to="/" style={{ color: 'black', textDecoration: 'none' }}>URPhone</Link>
         </Typography>
         <IconButton color="inherit" component={Link} to="/cart">
           <ShoppingCartIcon />
         </IconButton>
-        <Button color="inherit" component={Link} to="/inicio">Iniciar sesión</Button>
-        <Button color="inherit" component={Link} to="/registro">Registrarse</Button>
+        <Button color="inherit" component={Link} to="/inicio">
+          Iniciar sesión
+        </Button>
+        <Button color="inherit" component={Link} to="/registro">
+          Registrarse
+        </Button>
 
         <Menu
           anchorEl={anchorEl}
           open={Boolean(anchorEl)}
           onClose={handleClose}
+          sx={{ backgroundColor: 'white', color: 'black' }} 
         >
-          <MenuItem component={Link} to="/apple" onClick={handleClose}>Apple</MenuItem>
-          <MenuItem component={Link} to="/samsung" onClick={handleClose}>Samsung</MenuItem>
-          <MenuItem component={Link} to="/xiaomi" onClick={handleClose}>Xiaomi</MenuItem>
+          <MenuItem component={Link} to="/apple" onClick={handleClose}>
+            Apple
+          </MenuItem>
+          <MenuItem component={Link} to="/samsung" onClick={handleClose}>
+            Samsung
+          </MenuItem>
+          <MenuItem component={Link} to="/xiaomi" onClick={handleClose}>
+            Xiaomi
+          </MenuItem>
         </Menu>
       </Toolbar>
     </AppBar>

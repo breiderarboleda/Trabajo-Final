@@ -1,7 +1,6 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
-import CellPhoneCard from '../Cell';
-import Button from '@mui/material/Button'; 
+import CellPhoneCard from '../Componentes/Cell';import Button from '@mui/material/Button'; 
 import { Link } from 'react-router-dom';
 
 const samsungPhones = [
@@ -32,8 +31,21 @@ const SamsungPage = () => {
     <Grid container spacing={4} justifyContent="center" sx={{ padding: '2rem', marginTop: '2rem', marginBottom: '4rem' }}>
       {samsungPhones.map((phone, index) => (
         <Grid item key={index} xs={12} sm={6} md={4} lg={3} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <CellPhoneCard name={phone.name} image={phone.image} link={phone.link} />
-          <Button variant="contained" color="primary" component={Link} to={`/phone/${index + 4}`} sx={{ marginTop: '1rem' }}>Ver</Button>
+           <CellPhoneCard name={phone.name} image={phone.image} link={phone.link}>
+          <Button variant="contained" color="primary" component={Link} to={`/phone/${index + 4}`} sx={{
+            backgroundColor: 'transparent',
+            border: '1px  #007bff',
+            color: ' #007bff',
+            padding: '10px 20px',
+            borderRadius: 5,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginTop: '1rem',
+            color: 'black',
+            fontFamily: 'Helvetica, Arial',
+          }}>Ver</Button>        
+          </CellPhoneCard>
         </Grid>
       ))}
     </Grid>

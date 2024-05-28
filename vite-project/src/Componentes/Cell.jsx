@@ -1,25 +1,23 @@
 import React from 'react';
 import Card from '@mui/material/Card';
-import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 
-const CellPhoneCard = ({ name, description, image }) => {
+const CellPhoneCard = ({ name, image, children }) => {
   return (
-    <Card sx={{ height: '100%' }}>
+    <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         component="img"
-        height="250"
+        height="300"
         image={image}
         alt={name}
       />
       <CardContent>
-        <Typography gutterBottom variant="h6" component="div">
+        <Typography gutterBottom variant="h5" component="div">
           {name}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {description}
-        </Typography>
+        {children}
       </CardContent>
     </Card>
   );

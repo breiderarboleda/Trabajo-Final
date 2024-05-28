@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 
 const Footer = () => {
   return (
-    <AppBar position="fixed" color="primary" style={{ top: 'auto', bottom: 0 }}>
+    <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0, backgroundColor: 'white', color: 'black'}}>
       <Toolbar>
         <Typography variant="body1" color="inherit" align="center" style={{ width: '100%' }}>
           © {new Date().getFullYear()} URPhone. Todos los derechos reservados.

@@ -2,7 +2,6 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
 }
 
 .logo {
@@ -40,3 +39,38 @@
 .read-the-docs {
   color: #888;
 }
+
+.custom-carousel-container {
+  text-align: center;
+}
+
+.custom-carousel-img {
+  width: 700px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.custom-carousel-caption h3,
+.custom-carousel-caption p {
+  color: #007bff; 
+}
+
+.image-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.image-container {
+  overflow: hidden; 
+}
+.rounded-corner {
+  border: 2px solid #ddd; 
+  border-radius: 10px; 
+}
+
+
+
