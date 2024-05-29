@@ -18,14 +18,22 @@ const LoginPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
     console.log('Form data:', form);
   };
 
   return (
-    <Box display="flex" justifyContent="center" alignItems="center" minHeight="70vh" width = "100vw" >
+    <Box
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        minHeight: '70vh',
+        backgroundColor: '#f5f5f5',
+        marginTop: '20px'
+      }}
+    >
       <Container maxWidth="sm">
-        <Typography variant="h4" gutterBottom>
+        <Typography variant="h4" gutterBottom align="center">
           Iniciar Sesión
         </Typography>
         <form onSubmit={handleSubmit}>
@@ -40,18 +48,20 @@ const LoginPage = () => {
                 value={form.email}
                 onChange={handleChange}
                 required
+                sx={{ backgroundColor: '#fff' }} 
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
                 name="password"
-                label="Password"
+                label="Contraseña"
                 type="password"
                 variant="outlined"
                 fullWidth
                 value={form.password}
                 onChange={handleChange}
                 required
+                sx={{ backgroundColor: '#fff' }} 
               />
             </Grid>
             <Grid item xs={12}>
@@ -60,8 +70,9 @@ const LoginPage = () => {
               </Button>
             </Grid>
             <Grid item xs={12}>
-              <Typography variant="body2">
-                ¿No tienes una cuenta? <Link to="/registro">Regístrate aquí</Link>
+              <Typography variant="body2" align="center">
+                ¿No tienes una cuenta? <Link to="/registro" style={{ textDecoration: 'none', color: '#007bff' }}>Regístrate aquí
+                </Link>
               </Typography>
             </Grid>
           </Grid>

@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import { TextField, Button, Typography, Container, Grid, Box } from '@mui/material';
+import { useNavigate, Link } from 'react-router-dom';
+
 
 const Checkout = () => {
+
+  const navigate = useNavigate();
+
   const [form, setForm] = useState({
     firstName: '',
     lastName: '',
@@ -29,8 +34,13 @@ const Checkout = () => {
     console.log('Form data:', form);
   };
 
+  
+  const goBack = () => {
+    navigate(-1);
+  };
+
   return (
-    <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh" width="100vw">
+    <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh" width="90vw">
       <Container maxWidth="sm">
         <Typography variant="h4" gutterBottom>
           Proceso de pago
@@ -125,10 +135,15 @@ const Checkout = () => {
                 required
               />
             </Grid>
-            <Grid item xs={12}>
-              <Button type="submit" variant="contained" color="primary" fullWidth>
+            <Grid item xs={12} sm={6}>
+              <Button type="submit" variant="contained" color="primary"  sx={{ height: 55, width: 268 }} fullWidth>
                 Pagar
               </Button>
+            </Grid>
+            <Grid item xs={12}>
+              <Button variant="contained" color="secondary" onClick={goBack} fullWidth>
+                  Volver
+                </Button>
             </Grid>
           </Grid>
         </form>

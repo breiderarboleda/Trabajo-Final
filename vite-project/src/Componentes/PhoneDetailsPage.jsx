@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { Box, Button, Typography, List, ListItem, ListItemText, Container } from '@mui/material';
+import { Box, Button, Typography, List, ListItem, ListItemText, Divider, Container, Grid } from '@mui/material';
 
 const PhoneDetailsPage = () => {
   const { id } = useParams();
@@ -134,39 +134,59 @@ const PhoneDetailsPage = () => {
         justifyContent: 'center',
         alignItems: 'center',
         minHeight: '100vh',
-        width: '100vw', 
+        backgroundColor: '#ffffff',
+        marginTop: '20px',
       }}
     >
-      <Container maxWidth="sm">
-      <Box display="flex" flexDirection="column" alignItems="center" p={2}>
-        <Typography variant="h2" gutterBottom>{phoneData.name}</Typography>
-        <img src={phoneData.image} alt={phoneData.name} style={{ maxWidth: '100%', height: 'auto', objectFit: 'cover' }} />
-        <Typography variant="h6" gutterBottom>Especificaciones:</Typography>
-        <List>
-          <ListItem>
-            <ListItemText primary={`Color: ${phoneData.color}`} />
-          </ListItem>
-          <ListItem>
-            <ListItemText primary={`Precio: ${phoneData.price}`} />
-          </ListItem>
-          <ListItem>
-            <ListItemText primary={`Tamaño de pantalla: ${phoneData.screenSize}`} />
-          </ListItem>
-          <ListItem>
-            <ListItemText primary={`Cámara: ${phoneData.camera}`} />
-          </ListItem>
-          <ListItem>
-            <ListItemText primary={`Almacenamiento: ${phoneData.storage}`} />
-          </ListItem>
-        </List>
-        <Box display="flex" justifyContent="space-between" width="100%" maxWidth="400px" mt={10}>
-          <Button variant="contained" color="primary" onClick={goBack}>Volver</Button>
-          <Button variant="contained" color="secondary" component={Link} to="/cart">Agregar al carrito</Button>
-        </Box>
-      </Box>
+      <Container maxWidth="md">
+        <Grid container spacing={2}>
+          <Grid item xs={12} md={6}>
+            <Box display="flex" flexDirection="column" alignItems="center" p={2}>
+              <Typography variant="h4" gutterBottom>{phoneData.name}</Typography>
+              <img
+                src={phoneData.image}
+                alt={phoneData.name}
+                style={{ width: '100%', height: 'auto', objectFit: 'cover', borderRadius: '10px' }}
+              />
+            </Box>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Box p={2}>
+              <Typography variant="h5" gutterBottom>Especificaciones:</Typography>
+              <List>
+                <ListItem disableGutters>
+                  <ListItemText primary={`Color: ${phoneData.color}`} />
+                </ListItem>
+                <ListItem disableGutters>
+                  <ListItemText primary={`Precio: ${phoneData.price}`} />
+                </ListItem>
+                <ListItem disableGutters>
+                  <ListItemText primary={`Tamaño de pantalla: ${phoneData.screenSize}`} />
+                </ListItem>
+                <ListItem disableGutters>
+                  <ListItemText primary={`Cámara: ${phoneData.camera}`} />
+                </ListItem>
+                <ListItem disableGutters>
+                  <ListItemText primary={`Almacenamiento: ${phoneData.storage}`} />
+                </ListItem>
+              </List>
+              <Box display="flex" justifyContent="space-between" width="100%" mt={3}>
+                <Button variant="contained" color="primary" onClick={goBack}>
+                  Volver
+                </Button>
+                <Button variant="contained" color="secondary" component={Link} to="/cart">
+                  Agregar al carrito
+                </Button>
+              </Box>
+            </Box>
+          </Grid>
+        </Grid>
+        <Divider variant="middle" sx={{ mt: 2, mb: 2 }} /> {/* Added divider between sections */}
       </Container>
     </Box>
   );
 };
 
 export default PhoneDetailsPage;
+
+ 

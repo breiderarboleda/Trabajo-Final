@@ -3,10 +3,10 @@ import { useNavigate, Link } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import Button from '@mui/material/Button';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import ListItemSecondaryAction from '@mui/material/ListItemSecondaryAction';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableRow from '@mui/material/TableRow';
+import TableCell from '@mui/material/TableCell';
 import TextField from '@mui/material/TextField';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Container from '@mui/material/Container';
@@ -45,50 +45,58 @@ const Cart = () => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        minHeight: '100vh',
-        width: '100vw', 
+        height: '60vh',
+        backgroundColor: '#ffffff',
+        padding: '20px',
       }}
     >
-      <Container maxWidth="sm">
-        <Box textAlign="center">
-          <Typography variant="h4" gutterBottom>
-            Carrito de Compras
-          </Typography>
-          <List>
+      <Container maxWidth="md">
+        <Typography variant="h5" align="center" gutterBottom>
+          Carrito de Compras
+        </Typography>
+        <Table>
+          <TableBody>
             {cartItems.map((item) => (
-              <ListItem key={item.id}>
-                <ListItemText primary={item.name} secondary={`$${item.price}`} />
-                <TextField
-                  type="number"
-                  value={item.quantity}
-                  onChange={(e) => handleQuantityChange(item.id, parseInt(e.target.value))}
-                  inputProps={{ min: 1 }}
-                  style={{ width: '50px', marginRight: '10px' }}
-                />
-                <ListItemSecondaryAction>
-                  <IconButton edge="end" aria-label="delete" onClick={() => handleRemoveItem(item.id)}>
+              <TableRow key={item.id}>
+                <TableCell>
+                  <Typography variant="body1">{item.name}</Typography>
+                </TableCell>
+                <TableCell align="right">
+                  <Typography variant="body1">${item.price}</Typography>
+                </TableCell>
+                <TableCell align="right">
+                  <TextField
+                    type="number"
+                    value={item.quantity}
+                    onChange={(e) => handleQuantityChange(item.id, parseInt(e.e.target.value))}
+                    inputProps={{ min: 1 }}
+                    sx={{ width: '80px' }}
+                  />
+                </TableCell>
+                <TableCell align="right">
+                  <IconButton onClick={() => handleRemoveItem(item.id)}>
                     <DeleteIcon />
                   </IconButton>
-                </ListItemSecondaryAction>
-              </ListItem>
+                </TableCell>
+              </TableRow>
             ))}
-          </List>
-          <Typography variant="h6" mt={2}>
-            Total: ${total}
-          </Typography>
-          <Grid container spacing={2} justifyContent="center" mt={2}>
-            <Grid item>
-              <Button variant="contained" color="primary" component={Link} to="/checkout">
-                Proceder al Pago
-              </Button>
-            </Grid>
-            <Grid item>
-              <Button variant="contained" color="secondary" onClick={goBack}>
-                Volver
-              </Button>
-            </Grid>
+          </TableBody>
+        </Table>
+        <Grid container spacing={2} justifyContent="flex-end">
+          <Grid item xs={6}>
+            <Typography variant="h6" align="right">
+              Total: ${total}
+            </Typography>
           </Grid>
-        </Box>
+          <Box display="flex" justifyContent="space-between" width="96%" mt={3}>
+                <Button variant="contained" color="primary" onClick={goBack}>
+                  Volver
+                </Button>
+                <Button variant="contained" color="secondary" component={Link} to="/checkout">
+                  Proceder al pago
+                </Button>
+              </Box>
+        </Grid>
       </Container>
     </Box>
   );
