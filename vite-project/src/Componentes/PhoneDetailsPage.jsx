@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { Box, Button, Typography, List, ListItem, ListItemText, Divider, Container, Grid } from '@mui/material';
+import { Box, Button, Typography, List, ListItem, ListItemText, Divider, Container, Grid, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
 
 const PhoneDetailsPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
 
   const phoneSpecs = {
     0: {
@@ -123,6 +124,14 @@ const PhoneDetailsPage = () => {
     return <div>No se encontraron detalles para este teléfono.</div>;
   }
 
+  const handleAddToCart = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   const goBack = () => {
     navigate(-1);
   };
@@ -170,23 +179,31 @@ const PhoneDetailsPage = () => {
                   <ListItemText primary={`Almacenamiento: ${phoneData.storage}`} />
                 </ListItem>
               </List>
-              <Box display="flex" justifyContent="space-between" width="100%" mt={3}>
-                <Button variant="contained" color="primary" onClick={goBack}>
-                  Volver
-                </Button>
-                <Button variant="contained" color="secondary" component={Link} to="/cart">
-                  Agregar al carrito
-                </Button>
+              <Divider sx={{ my: 2 }} />
+              <Box display="flex" justifyContent="space-between">
+                <Button variant="outlined" color="primary" onClick={goBack}>Volver</Button>
+                <Button variant="contained" color="secondary" onClick={handleAddToCart}>Agregar al carrito</Button>
               </Box>
             </Box>
           </Grid>
         </Grid>
-        <Divider variant="middle" sx={{ mt: 2, mb: 2 }} /> {}
       </Container>
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>Iniciar sesión</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Debes iniciar sesión antes de agregar productos al carrito.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">Cancelar</Button>
+          <Button component={Link} to="../inicio" color="primary" autoFocus>
+            Iniciar sesión
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Box>
   );
 };
 
 export default PhoneDetailsPage;
-
- 

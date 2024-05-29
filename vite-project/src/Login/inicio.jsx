@@ -54,13 +54,15 @@ const LoginPage = ({ onLogin }) => {
               />
             </Grid>
             <Grid item xs={12}>
-              <Button
+            <Button
                 type="submit"
                 variant="contained"
                 color="primary"
                 fullWidth
+                component={Link}
+                to="/"
               >
-                <Link to="/">Iniciar Sesión</Link>
+                Iniciar Sesión 
               </Button>
             </Grid>
             <Grid item xs={12}>

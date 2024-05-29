@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-import { TextField, Button, Typography, Container, Grid, Box } from '@mui/material';
-import { useNavigate, Link } from 'react-router-dom';
-
+import { TextField, Button, Typography, Container, Grid, Box, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const Checkout = () => {
-
   const navigate = useNavigate();
 
   const [form, setForm] = useState({
@@ -20,6 +18,8 @@ const Checkout = () => {
     cvv: '',
   });
 
+  const [open, setOpen] = useState(false);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((prevForm) => ({
@@ -32,9 +32,14 @@ const Checkout = () => {
     e.preventDefault();
 
     console.log('Form data:', form);
+    setOpen(true); // Mostrar el diálogo de confirmación
   };
 
-  
+  const handleClose = () => {
+    setOpen(false);
+    navigate('/'); // Redirigir a la página de inicio o cualquier otra página
+  };
+
   const goBack = () => {
     navigate(-1);
   };
@@ -136,17 +141,30 @@ const Checkout = () => {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <Button type="submit" variant="contained" color="primary"  sx={{ height: 55, width: 268 }} fullWidth>
+              <Button type="submit" variant="contained" color="primary" sx={{ height: 55, width: 268 }} fullWidth>
                 Pagar
               </Button>
             </Grid>
             <Grid item xs={12}>
               <Button variant="contained" color="secondary" onClick={goBack} fullWidth>
-                  Volver
-                </Button>
+                Volver
+              </Button>
             </Grid>
           </Grid>
         </form>
+        <Dialog open={open} onClose={handleClose}>
+          <DialogTitle>Pago Realizado</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              Su pago ha sido realizado correctamente.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose} color="primary">
+              Cerrar
+            </Button>
+          </DialogActions>
+        </Dialog>
       </Container>
     </Box>
   );
