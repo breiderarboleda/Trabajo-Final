@@ -72,10 +72,15 @@
   border-radius: 10px; 
 }
 
-.h3 {
-  color: black;
+.custom-carousel-caption h3 {
+  color: #000000;
 }
 
-.p {
-  color: black;
+.custom-carousel-caption p {
+  color: #000000;
+  background: rgba(255, 255, 255, 0.5); 
+  border-radius: 15px;
+  padding: 10px 20px;
+  display: inline-block;
 }
+

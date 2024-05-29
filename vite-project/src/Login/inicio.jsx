@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { TextField, Button, Typography, Container, Grid, Box } from '@mui/material';
 
-const LoginPage = () => {
+const LoginPage = ({ onLogin }) => {
   const [form, setForm] = useState({
     email: '',
     password: '',
@@ -18,22 +18,13 @@ const LoginPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form data:', form);
+    onLogin();
   };
 
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        minHeight: '70vh',
-        backgroundColor: '#f5f5f5',
-        marginTop: '20px'
-      }}
-    >
+    <Box display="flex" justifyContent="center" alignItems="center" minHeight="70vh" width="90vw">
       <Container maxWidth="sm">
-        <Typography variant="h4" gutterBottom align="center">
+        <Typography variant="h4" gutterBottom>
           Iniciar Sesión
         </Typography>
         <form onSubmit={handleSubmit}>
@@ -48,31 +39,33 @@ const LoginPage = () => {
                 value={form.email}
                 onChange={handleChange}
                 required
-                sx={{ backgroundColor: '#fff' }} 
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
                 name="password"
-                label="Contraseña"
+                label="Password"
                 type="password"
                 variant="outlined"
                 fullWidth
                 value={form.password}
                 onChange={handleChange}
                 required
-                sx={{ backgroundColor: '#fff' }} 
               />
             </Grid>
             <Grid item xs={12}>
-              <Button type="submit" variant="contained" color="primary" fullWidth>
-                Iniciar Sesión
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                fullWidth
+              >
+                <Link to="/">Iniciar Sesión</Link>
               </Button>
             </Grid>
             <Grid item xs={12}>
-              <Typography variant="body2" align="center">
-                ¿No tienes una cuenta? <Link to="/registro" style={{ textDecoration: 'none', color: '#007bff' }}>Regístrate aquí
-                </Link>
+              <Typography variant="body2">
+                ¿No tienes una cuenta? <Link to="/registro">Regístrate aquí</Link>
               </Typography>
             </Grid>
           </Grid>

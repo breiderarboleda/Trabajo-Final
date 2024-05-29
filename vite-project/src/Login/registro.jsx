@@ -5,8 +5,8 @@ import { TextField, Button, Typography, Container, Grid, Box } from '@mui/materi
 const RegistroPage = () => {
   const [form, setForm] = useState({
     nombre: '',
-    email: '',
-    password: '',
+    correo: '', 
+    contrasena: '',
   });
 
   const handleChange = (e) => {
@@ -17,24 +17,34 @@ const RegistroPage = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form data:', form);
+
+    try {
+      const response = await fetch('http://localhost:5173/registro.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(form),
+        mode: 'no-cors',
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        minHeight: '70vh',
-        backgroundColor: '#f5f5f5', 
-        marginTop: '20px'
-      }}
-    >
+    <Box display="flex" justifyContent="center" alignItems="center" minHeight="70vh" width="90vw">
       <Container maxWidth="sm">
-        <Typography variant="h4" gutterBottom align="center">
+        <Typography variant="h4" gutterBottom>
           Registro
         </Typography>
         <form onSubmit={handleSubmit}>
@@ -42,51 +52,53 @@ const RegistroPage = () => {
             <Grid item xs={12}>
               <TextField
                 name="nombre"
-                label="Nombre Completo"
+                label="Nombre"
                 variant="outlined"
                 fullWidth
                 value={form.nombre}
                 onChange={handleChange}
-                required
-                sx={{ backgroundColor: '#fff' }} 
+                required  
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
-                name="email"
+                name="correo" 
                 label="Email"
                 type="email"
                 variant="outlined"
                 fullWidth
-                value={form.email}
+                value={form.correo}
                 onChange={handleChange}
-                required
-                sx={{ backgroundColor: '#fff' }} 
+                required  
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
-                name="password"
-                label="Contraseña"
+                name="contrasena"
+                label="Password"
                 type="password"
                 variant="outlined"
                 fullWidth
-                value={form.password}
+                value={form.contrasena}
                 onChange={handleChange}
-                required
-                sx={{ backgroundColor: '#fff' }} 
+                required  
               />
             </Grid>
             <Grid item xs={12}>
-              <Button type="submit" variant="contained" color="primary" fullWidth>
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                fullWidth
+                component={Link}
+                to="/inicio"
+              >
                 Registrarse
               </Button>
             </Grid>
             <Grid item xs={12}>
-              <Typography variant="body2" align="center">
-                ¿Ya tienes una cuenta? <Link to="/inicio" style={{ textDecoration: 'none', color: '#007bff' }}>
-                  Inicia sesión aquí
-                </Link>
+              <Typography variant="body2">
+                ¿Ya tienes una cuenta? <Link to="/inicio">Inicia sesión aquí</Link>
               </Typography>
             </Grid>
           </Grid>

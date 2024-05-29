@@ -181,7 +181,7 @@ const PhoneDetailsPage = () => {
             </Box>
           </Grid>
         </Grid>
-        <Divider variant="middle" sx={{ mt: 2, mb: 2 }} /> {/* Added divider between sections */}
+        <Divider variant="middle" sx={{ mt: 2, mb: 2 }} /> {}
       </Container>
     </Box>
   );
